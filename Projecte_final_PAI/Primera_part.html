@@ -9,10 +9,23 @@
 <body>
   <h1>Formulari de Validació</h1>
   <form id="formulari">
+    <!-- Defineix un formulari a la pàgina.
+    L'atribut action="" significa que no teniu una URL específica per enviar les dades.
+    L'atribut name="formu" assigna un nom al formulari,
+    permetent accedir-hi des de JavaScript amb document.forms['formu']. -->
+
     <!-- Nom i cognoms -->
     <label for="nom">Nom i Cognoms:</label>
+    <!-- L'atribut for="nom" vincula el <label> amb l'<input> id="nom" -->
+    
     <input type="text" id="nom" placeholder="Nom i Cognoms">
+    <!-- L'atribut name="nom" és útil per enviar el valor del camp al servidor
+    (encara que aquí no hi ha cap enviament real per action=""). -->
+    
     <p id="error-nom" class="error"></p>
+    <!-- És un botó per enviar el formulari. Quan es fa clic, 
+    per defecte el formulari s'envia i recarrega la pàgina,
+    tret que s'aturi aquest comportament amb JavaScript. -->
 
     <!-- Rang d'edats -->
     <label for="edat">Rang d'edats:</label>
