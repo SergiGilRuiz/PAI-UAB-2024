@@ -124,6 +124,76 @@ function validarCorreuElectronic() {
 
 
 
+// Contrasenya
+// Funció per validar la contrasenya
+function validarContrasenya() {
+  var contrasenya = document.getElementById('contrasenya').value;
+  var errorMissatge = document.getElementById('error-contrasenya');
+
+  // Variables per la validación
+  var majuscula = false;
+  var minuscula = false;
+  var numeros = 0;
+  var especials = false;
+  var caracteresEspecials = "!@#$%^&*()_+[]={};:|,.<>?";
+
+  // Comprovem que la contrasenya sigui correcta: 1 majúscula, 1 minúscula, caràcters (llista) i caràcters especials
+  for (var i = 0; i < contrasenya.length; i++) {
+      var car = contrasenya[i];
+      
+      if (car >= 'A' && car <= 'Z') {
+          majuscula = true;
+      } else if (car >= 'a' && car <= 'z') {
+          minuscula = true;
+      } else if (car >= '0' && car <= '9') {
+          numeros++;    //+1 a la llista (necessitem 2)
+      } else if (caracteresEspecials.includes(car)) {
+          especials = true;
+      }
+  }
+
+  //Comprovem que es compleixin tots els requisits
+  if (contrasenya.length < 8) {
+      errorMissatge.textContent = "La contrasenya ha de tenir almenys 8 caràcters.";
+      return false;
+  }
+  if (!majuscula) {
+      errorMissatge.textContent = "La contrasenya ha de tenir almenys una lletra majúscula.";
+      return false;
+  }
+  if (!minuscula) {
+      errorMissatge.textContent = "La contrasenya ha de tenir almenys una lletra minúscula.";
+      return false;
+  }
+  if (numeros < 2) {
+      errorMissatge.textContent = "La contrasenya ha de tenir al menys 2 números.";
+      return false;
+  }
+  if (!especials) {
+      errorMissatge.textContent = "La contrasenya ha de tenir al menys 1 caràcter especial (!@#$%^&*()_+[]={};:|,.<>?).";
+      return false;
+  }
+
+  //Si la contrasenya és correcte, neteja el missatge d'error
+  errorMissatge.textContent = "";
+  return true;
+}
+
+//Funció per mostrar/ocultar la contrasenya
+//Quan cliquem al requadre de mostrar contrasenya farà la següent funció:
+var mostrarContrasenyaCheckbox = document.getElementById('mostrar-contrasenya');
+
+mostrarContrasenyaCheckbox.addEventListener('change', function() {
+  var contrasenyaInput = document.getElementById('contrasenya');
+  if (mostrarContrasenyaCheckbox.checked) {
+      contrasenyaInput.type = 'text';  //Mostra la contrasenya. Valor de type (text) predefinit per mostrar
+  } else {
+      contrasenyaInput.type = 'password';  //Oculta la contrasenya. Valor de type (password) predefinit per ocultar
+  }
+});
+
+
+
 
 
 
