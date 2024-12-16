@@ -194,6 +194,44 @@ mostrarContrasenyaCheckbox.addEventListener('change', function() {
 
 
 
+// Validar contrasenya
+//Funció per comparar les contrasenyes
+function compararContrasenyes() {
+  const contrasenya = document.getElementById('contrasenya').value;
+  const confirmarContrasenya = document.getElementById('confirmar-contrasenya').value;
+  const errorConfirmar = document.getElementById('error-confirmar');
+
+  //Verificar si son iguals
+  if (contrasenya !== confirmarContrasenya) {
+      errorConfirmar.textContent = "Les contrasenyes no coincideixen.";
+      return false;
+  }
+
+  //Si coincideixen, treure el missatge d'error
+  errorConfirmar.textContent = "";
+  return true;
+}
+
+//Funció per mostrar/ocultar la confirmació de la contrasenya
+document.getElementById('mostrar-confirmar').addEventListener('change', function () {
+  const confirmarInput = document.getElementById('confirmar-contrasenya');
+  const mostrarConfirmarCheckbox = document.getElementById('mostrar-confirmar');
+//Si la casella està seleccionada, mostra el text sinó, no el mostris. .checked és per veure si está pitjat o no
+//El ? és un if/else que actua amb text si és true (està pitjat) i password si és false (no ho està)
+  confirmarInput.type = mostrarConfirmarCheckbox.checked ? 'text' : 'password';
+});  
+
+//Associar la validació al "blur" en el camp de confirmar contrasenya
+document.getElementById('confirmar-contrasenya').addEventListener('blur', compararContrasenyes);
+
+
+
+
+
+
+
+
+
 
 
 
