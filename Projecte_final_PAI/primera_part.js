@@ -1,3 +1,4 @@
+//Nom i cognoms
 function validarNom() {
   const nom = document.getElementById("nom").value.trim();
   //trim és per eliminar els espais en blanc al principi i al final de valor obtingut (nom)
@@ -47,3 +48,25 @@ function validarNom() {
     errorElement.textContent = ""; // Netejar errors si tot és correcte
   }
 }
+
+
+
+//Rang d'edats
+// Validació del camp 'Rang d'edats'
+function validateEdat() {
+  const selectEdat = document.getElementById('edat');
+  const errorElement = document.getElementById('error-edat');
+  
+  // Comproveu si heu seleccionat una opció vàlida
+  if (selectEdat.value === "") {    //És el valor que te l'opció "Selecciona una opció"
+      errorElement.textContent = "Per favor, selecciona una opció vàlida.";
+  } else {
+      errorElement.textContent = ""; // Netejar missatge derror
+  }
+}
+
+
+
+
+
+

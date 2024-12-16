@@ -15,7 +15,30 @@
     <label for="nom">Nom i Cognoms:</label>
     <input type="text" id="nom" placeholder="Nom i Cognoms" onblur="validarNom()">
     <p id="error-nom" class="error"></p>
+
+
+
+    <!-- Rang d'edats -->
+    <label for="edat">Rang d'edats:</label>
+    <select id="edat" onblur="validateEdat()">
+      <option value="">Selecciona una opció</option>  <!--Li donem el valor ""-->
+      <option value="0-17">0-17</option>
+      <option value="18-25">18-25</option>
+      <option value="26-40">26-40</option>
+      <option value="41-55">41-55</option>
+      <option value="56-65">56-65</option>
+      <option value="65+">Més de 65</option>
+    </select>
+    <p id="error-edat" class="error"></p>
+
+
+
+
+
   </form>
   <script src="primera_part.js"></script>
 </body>
 </html>
+
+
+
