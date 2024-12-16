@@ -86,15 +86,45 @@ function validarCodiPostal() {
           break;
       }
   }
-
     //Al html ja tenim un maxlength que no put superar els 5 caràcters però algú podria escriure menys de 5
     if (valor.length !== 5) {
         mensajeError = "El codi postal ha de tenir exactament 5 números.";
     }
-
     //Mostra el missatge d'error si és necessari
     errorCodi.textContent = mensajeError;
 }
+
+
+
+// Correu electrònic
+function validarCorreuElectronic() {
+  // Obtenim el valor de l'input
+  var email = document.getElementById("email").value;
+  var error = document.getElementById("error-email");
+
+  //Comprovar que hi ha només una '@'
+  var arroba = email.indexOf('@');  //indexOf busca els que li diguis y torna la posició
+  var segona = email.indexOf('@', arroba + 1);  //Aquí inicia la recerca de la segona @ però a partir de la que hem trobat abans
+
+  //Validem que només hi ha una '@' i que després d'aquesta hi hagi almenys 1 punt (.)
+  if (arroba === -1 || segona !== -1) {     //-1 és el valor per defecte si no troba res
+    error.textContent = "El correu ha de contenir només una '@'.";
+  }
+  //Si només troba una @
+  else {
+    var punt = email.indexOf('.', arroba);  //igual que abans, busquem un . a partir de la @
+    if (punt === -1) {   //si no s'ha trobat el punt (-1) o 
+      error.textContent = "Ha de contenir almenys un punt (.) després de la '@'.";
+    } 
+    else {
+      error.textContent = ""; //No hi ha error
+    }
+  }
+}
+
+
+
+
 
 
 
