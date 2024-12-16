@@ -13,6 +13,7 @@
 
     <!-- Nom i cognoms -->
     <label for="nom">Nom i Cognoms:</label>
+    <!--placeholder mostra un text dins del camp d'entrada quan estigui buit.-->
     <input type="text" id="nom" placeholder="Nom i Cognoms" onblur="validarNom()">
     <p id="error-nom" class="error"></p>
 
@@ -30,6 +31,17 @@
       <option value="65+">Més de 65</option>
     </select>
     <p id="error-edat" class="error"></p>
+
+
+
+    <!-- Codi postal -->
+    <label for="codi-postal">Codi Postal:</label>
+    <input type="text" id="codi-postal" maxlength="5" placeholder="12345" onblur="validarCodiPostal()">
+    <p id="error-codi" class="error"></p>
+
+
+
+
 
 
 
