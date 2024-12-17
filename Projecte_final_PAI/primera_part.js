@@ -98,7 +98,7 @@ function validarCodiPostal() {
 
 // Correu electrònic
 function validarCorreuElectronic() {
-  // Obtenim el valor de l'input
+  //Obtenim el valor de l'input
   var email = document.getElementById("email").value;
   var error = document.getElementById("error-email");
 
@@ -125,19 +125,19 @@ function validarCorreuElectronic() {
 
 
 // Contrasenya
-// Funció per validar la contrasenya
+//Funció per validar la contrasenya
 function validarContrasenya() {
   var contrasenya = document.getElementById('contrasenya').value;
   var errorMissatge = document.getElementById('error-contrasenya');
 
-  // Variables per la validación
+  //Variables per la validación
   var majuscula = false;
   var minuscula = false;
   var numeros = 0;
   var especials = false;
   var caracteresEspecials = "!@#$%^&*()_+[]={};:|,.<>?";
 
-  // Comprovem que la contrasenya sigui correcta: 1 majúscula, 1 minúscula, caràcters (llista) i caràcters especials
+  //Comprovem que la contrasenya sigui correcta: 1 majúscula, 1 minúscula, caràcters (llista) i caràcters especials
   for (var i = 0; i < contrasenya.length; i++) {
       var car = contrasenya[i];
       
@@ -224,6 +224,44 @@ document.getElementById('mostrar-confirmar').addEventListener('change', function
 //Associar la validació al "blur" en el camp de confirmar contrasenya
 document.getElementById('confirmar-contrasenya').addEventListener('blur', compararContrasenyes);
 
+
+
+// Checkbox
+
+
+
+
+
+// Botó esborrar
+//Seleccionar el botó "Esborrar"
+const btnEsborrar = document.getElementById("esborrar");
+
+//Quan cliquem 
+btnEsborrar.addEventListener("click", function () {
+  //Esborrem els camps de text 
+  document.getElementById("nom").value = "";
+  document.getElementById("codi-postal").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("contrasenya").value = "";
+  document.getElementById("confirmar-contrasenya").value = "";
+
+  //Selecciona la primera opció (Selecciona una opció)
+  document.getElementById("edat").selectedIndex = 0;
+
+  //Treiem totes les opcions de marcar
+  document.getElementById("mostrar-contrasenya").checked = false;
+  document.getElementById("mostrar-confirmar").checked = false;
+  document.getElementById("privacitat").checked = false;
+
+  //Esborrem els missatges d'error
+  document.getElementById("error-nom").innerText = "";
+  document.getElementById("error-edat").innerText = "";
+  document.getElementById("error-codi").innerText = "";
+  document.getElementById("error-email").innerText = "";
+  document.getElementById("error-contrasenya").innerText = "";
+  document.getElementById("error-confirmar").innerText = "";
+  document.getElementById("error-privacitat").innerText = "";
+});
 
 
 
