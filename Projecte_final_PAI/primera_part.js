@@ -1,3 +1,15 @@
+//Quan s'ha carregat la pàgina
+window.onload = function () {
+  //Deshabilitem els camps inicialment perquè no es pugui passar al següent sense completar l'anterior
+  document.getElementById("edat").disabled = true;
+  document.getElementById("codi-postal").disabled = true;
+  document.getElementById("email").disabled = true;
+  document.getElementById("contrasenya").disabled = true;
+  document.getElementById("confirmar-contrasenya").disabled = true;
+};
+
+
+
 // Nom i cognoms
 function validarNom() {
   const nom = document.getElementById("nom").value.trim();
@@ -44,8 +56,11 @@ function validarNom() {
   //Mostra el missatge d'error si cal
   if (errorMissatge) {
     errorElement.textContent = errorMissatge;   //Assigna el missatge d'error a l'element
+    document.getElementById("edat").disabled = true;
   } else {
     errorElement.textContent = ""; //Netejar errors si tot és correcte
+    document.getElementById("edat").disabled = false;
+
   }
 }
 
@@ -60,8 +75,10 @@ function validateEdat() {
   //Comprovem si s'ha seleccionat una opció vàlida
   if (selectEdat.value === "") {    //És el valor que te l'opció "Selecciona una opció"
       errorElement.textContent = "Per favor, selecciona una opció vàlida.";
+      document.getElementById("codi-postal").disabled = true;
   } else {
       errorElement.textContent = ""; // Netejar missatge derror
+      document.getElementById("codi-postal").disabled = false;
   }
 }
 
@@ -89,8 +106,11 @@ function validarCodiPostal() {
     //Al html ja tenim un maxlength que no put superar els 5 caràcters però algú podria escriure menys de 5
     if (valor.length !== 5) {
         mensajeError = "El codi postal ha de tenir exactament 5 números.";
-    }
+        document.getElementById("email").disabled = true;
+    } else {
     //Mostra el missatge d'error si és necessari
+    document.getElementById("email").disabled = false;
+    }
     errorCodi.textContent = mensajeError;
 }
 
@@ -115,16 +135,20 @@ function validarCorreuElectronic() {
     var punt = email.indexOf('.', arroba);  //igual que abans, busquem un . a partir de la @
     if (punt === -1) {   //si no s'ha trobat el punt (-1) o 
       error.textContent = "Ha de contenir almenys un punt (.) després de la '@'.";
+          //Mostra el missatge d'error si és necessari
+    errorCodi.textContent = mensajeError;
+    document.getElementById("contrasenya").disabled = true;
     } 
     else {
       error.textContent = ""; //No hi ha error
+      document.getElementById("contrasenya").disabled = false;
     }
   }
 }
 
 
 
-// Contrasenya
+// Contrassenya
 //Funció per validar la contrasenya
 function validarContrasenya() {
   var contrasenya = document.getElementById('contrasenya').value;
@@ -155,27 +179,33 @@ function validarContrasenya() {
   //Comprovem que es compleixin tots els requisits
   if (contrasenya.length < 8) {
       errorMissatge.textContent = "La contrasenya ha de tenir almenys 8 caràcters.";
+      document.getElementById("confirmar-contrasenya").disabled = true;
       return false;
   }
   if (!majuscula) {
-      errorMissatge.textContent = "La contrasenya ha de tenir almenys una lletra majúscula.";
+      errorMissatge.textContent = "La contrasenya ha de tenir almenys una lletra majúscula."
+      document.getElementById("confirmar-contrasenya").disabled = true;
       return false;
   }
   if (!minuscula) {
       errorMissatge.textContent = "La contrasenya ha de tenir almenys una lletra minúscula.";
+      document.getElementById("confirmar-contrasenya").disabled = true;
       return false;
   }
   if (numeros < 2) {
       errorMissatge.textContent = "La contrasenya ha de tenir al menys 2 números.";
+      document.getElementById("confirmar-contrasenya").disabled = true;
       return false;
   }
   if (!especials) {
       errorMissatge.textContent = "La contrasenya ha de tenir al menys 1 caràcter especial (!@#$%^&*()_+[]={};:|,.<>?).";
+      document.getElementById("confirmar-contrasenya").disabled = true;
       return false;
   }
 
   //Si la contrasenya és correcte, neteja el missatge d'error
   errorMissatge.textContent = "";
+  document.getElementById("confirmar-contrasenya").disabled = false;
   return true;
 }
 
@@ -226,12 +256,6 @@ document.getElementById('confirmar-contrasenya').addEventListener('blur', compar
 
 
 
-// Checkbox
-
-
-
-
-
 // Botó esborrar
 //Seleccionar el botó "Esborrar"
 const btnEsborrar = document.getElementById("esborrar");
@@ -244,6 +268,13 @@ btnEsborrar.addEventListener("click", function () {
   document.getElementById("email").value = "";
   document.getElementById("contrasenya").value = "";
   document.getElementById("confirmar-contrasenya").value = "";
+
+  //Tornem a deshabilitar els camps
+  document.getElementById("edat").disabled = true;
+  document.getElementById("codi-postal").disabled = true;
+  document.getElementById("email").disabled = true;
+  document.getElementById("contrasenya").disabled = true;
+  document.getElementById("confirmar-contrasenya").disabled = true;
 
   //Selecciona la primera opció (Selecciona una opció)
   document.getElementById("edat").selectedIndex = 0;
@@ -265,14 +296,68 @@ btnEsborrar.addEventListener("click", function () {
 
 
 
+// Botó enviar
+//Funció per comprovar si hi ha algun error actiu
+function ErrorsActius() {
+  //Seleccionem cada element individualment
+  const errorNom = document.getElementById("error-nom").textContent;
+  const errorEdat = document.getElementById("error-edat").textContent;
+  const errorCodi = document.getElementById("error-codi").textContent;
+  const errorEmail = document.getElementById("error-email").textContent;
+  const errorContrasenya = document.getElementById("error-contrasenya").textContent;
+  const errorConfirmar = document.getElementById("error-confirmar").textContent;
+  const errorPrivacitat = document.getElementById("error-privacitat").textContent;
 
+  //Comprovem si algun text te errors
+  if (
+    errorNom !== "" || 
+    errorEdat !== "" || 
+    errorCodi !== "" || 
+    errorEmail !== "" || 
+    errorContrasenya !== "" || 
+    errorConfirmar !== "" || 
+    errorPrivacitat !== ""
+  ) {
+    return true; //Hi ha errors
+  } else {
+    return false; //No hi ha errors
+  }
+}
 
+//Funció del botó enviar
+document.getElementById("enviar").addEventListener("click", function(){
+  //Verifiquem que s'ha marcat el textbox de privacitats
+  const privacitatCheckbox = document.getElementById("privacitat");
+  if (!privacitatCheckbox.checked) {
+    document.getElementById("error-privacitat").textContent = "Has d'acceptar la política de privacitat.";
+    return; //Acabem la funció
+  } else {
+    document.getElementById("error-privacitat").textContent = ""; //Treiem l'error
+  }
 
+  //Comprovem que no hi hagi errors actius
+  if (hayErroresActivos()) {
+    alert("El formulari té errors actius. Revisa els camps.");
+    return; //Sortim de la funció
+  }
 
+  //Si no hi ha errors mostrem el contingut del formulari
+  const nom = document.getElementById("nom").value;
+  const edat = document.getElementById("edat").value;
+  const codiPostal = document.getElementById("codi-postal").value;
+  const email = document.getElementById("email").value;
 
+  const contingutFormulari = `
+    <p>Nom i Cognoms: ${nom}</p>
+    <p>Rang d'edats: ${edat}</p>
+    <p>Codi Postal: ${codiPostal}</p>
+    <p>Correu Electrònic: ${email}</p>
+    <p>Contrassenya: ${contrasenya}</p>
 
+  `;
 
-
-
+  document.getElementById("contingut-formulari").innerHTML = contingutFormulari;
+  alert("El formulari s'ha enviat correctament!");
+});
 
 
