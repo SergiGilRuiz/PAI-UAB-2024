@@ -352,8 +352,6 @@ document.getElementById("enviar").addEventListener("click", function(){
     <p>Rang d'edats: ${edat}</p>
     <p>Codi Postal: ${codiPostal}</p>
     <p>Correu Electrònic: ${email}</p>
-    <p>Contrassenya: ${contrasenya}</p>
-
   `;
 
   document.getElementById("contingut-formulari").innerHTML = contingutFormulari;
