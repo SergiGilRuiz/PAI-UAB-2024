@@ -1,0 +1,86 @@
+/* Cos */
+body {
+    font-family: Arial, sans-serif; 
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+  }
+  
+  /* Títol */
+  h1 {
+    text-align: center;
+    color: #4CAF50;
+    font-size: 2em; 
+    margin-bottom: 20px;
+  }
+  
+  /* Formulari */
+  #formulari {
+    background-color: #ffffff; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    padding: 20px;
+    max-width: 500px; 
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Labels i inputs */
+  label {
+    display: block; /* Cada etiqueta en una línia nova */
+    font-weight: bold; /* Text en negreta */
+    margin-top: 15px;
+  }
+  
+  input, select {
+    width: 100%; 
+    padding: 10px; /* + espai intern */
+    margin-top: 5px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+    box-sizing: border-box; /* Inclou el padding dins de l'ample */
+  }
+  
+  /* Botons */
+  button {
+    background-color: #4CAF50; 
+    color: white; 
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer; 
+    margin-top: 20px; 
+    font-size: 1em; 
+  }
+  
+  button:hover {
+    background-color: #45a049; /* Canvia a un verd fosc al passar el cursor */
+  }
+  
+  /* Missatges d'error */
+  .error {
+    color: #e74c3c; 
+    font-size: 0.9em; 
+    margin-top: 5px; 
+  }
+  /* Botó enviar */
+  #contingut-formulari {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px; 
+    padding: 20px;
+    margin-top: 20px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    font-size: 16px; 
+    color: #333; 
+  }
+  
+  /* Respostes botó enviar */
+  #contingut-formulari p {
+    margin: 10px 0;
+    line-height: 1.5; 
+  }
+  
+  
+  

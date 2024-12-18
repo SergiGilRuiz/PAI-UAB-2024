@@ -336,7 +336,7 @@ document.getElementById("enviar").addEventListener("click", function(){
   }
 
   //Comprovem que no hi hagi errors actius
-  if (hayErroresActivos()) {
+  if (ErrorsActius()) {
     alert("El formulari té errors actius. Revisa els camps.");
     return; //Sortim de la funció
   }
