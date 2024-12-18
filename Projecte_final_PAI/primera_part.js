@@ -74,7 +74,7 @@ function validateEdat() {
   
   //Comprovem si s'ha seleccionat una opció vàlida
   if (selectEdat.value === "") {    //És el valor que te l'opció "Selecciona una opció"
-      errorElement.textContent = "Per favor, selecciona una opció vàlida.";
+      errorElement.textContent = "Si us plau, selecciona una opció vàlida.";
       document.getElementById("codi-postal").disabled = true;
   } else {
       errorElement.textContent = ""; // Netejar missatge derror
