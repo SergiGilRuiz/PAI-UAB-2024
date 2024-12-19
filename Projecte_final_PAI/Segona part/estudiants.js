@@ -104,13 +104,13 @@ function exercici03() {
     // Añadimos cada distrito y su número de accidentes a la lista
     for (let i = 1; i <= 10; i++) {
         //Creem un element de llista (i) per a cada districte
-        let i = document.createElement("i");
-        i.textContent = `Districte ${i}: ${accidentsPerDistricte[i]} accidents`;
-        ul.appendChild(i); //appendChild() afegeix un element a la llista
+        let li = document.createElement("li");  //Ordenem els elements (li) de la llista desordenada (ul)
+        li.textContent = `Districte ${i}: ${accidentsPerDistricte[i]} accidents`;
+        ul.appendChild(li); //appendChild() afegeix un element a la llista
     }
     
     //Districte desconegut (-1)
-    let iDesconegut = document.createElement("i");
+    let iDesconegut = document.createElement("dis");
     iDesconegut.textContent = `Districte desconegut: ${accidentsPerDistricte["-1"]} accidents`;
     ul.appendChild(iDesconegut); 
     
@@ -155,6 +155,7 @@ function calcularAccidentsPerDistricte(districte) {
     }
     resultats.appendChild(missatge); //Afegim el missatge als resultats
 }
+
 
 
 
