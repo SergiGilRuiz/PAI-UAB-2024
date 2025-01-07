@@ -171,7 +171,7 @@ function validarContrasenya() {
           minuscula = true;
       } else if (car >= '0' && car <= '9') {
           numeros++;    //+1 a la llista (necessitem 2)
-      } else if (caracteresEspecials.includes(car)) {
+      } else if (caracteresEspecials.includes(car)) {   //includes comprova si un element està dins d'un array, retorna true si està i false si no
           especials = true;
       }
   }
@@ -285,7 +285,7 @@ btnEsborrar.addEventListener("click", function () {
   document.getElementById("privacitat").checked = false;
 
   //Esborrem els missatges d'error
-  document.getElementById("error-nom").innerText = "";
+  document.getElementById("error-nom").innerText = "";  //innerText assigna el text que es troba dins d'un element HTML
   document.getElementById("error-edat").innerText = "";
   document.getElementById("error-codi").innerText = "";
   document.getElementById("error-email").innerText = "";
